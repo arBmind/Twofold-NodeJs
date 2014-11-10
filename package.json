@@ -1,0 +1,39 @@
+{
+  "name": "template-engine",
+  "description": "Generates source code with source and template maps",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hicknhack-software/template-engine",
+  "author": "HicknHack Software GmbH <template-engine@hicknhack-software.com>",
+  "contributors": [
+    "Andreas Reischuck <andreas.reischuck@hicknhack-software.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/hicknhack-software/template-engine.git"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./lib/template-engine.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD",
+      "url": "http://opensource.org/licenses/BSD-3-Clause"
+    }
+  ],
+  "dependencies": {
+    "amdefine": ">=0.0.4",
+    "source-map": ">=0.1.40"
+  },
+  "devDependencies": {
+    "mocha": "git://github.com/hicknhack-software/mocha.git#master",
+    "should": ">=4.2.1",
+    "data-driven": ">=1.0.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter min --inline-diffs"
+  }
+}
