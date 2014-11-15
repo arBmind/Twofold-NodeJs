@@ -14,7 +14,7 @@
   "directories": {
     "lib": "./lib"
   },
-  "main": "./lib/template-engine.js",
+  "main": "./lib/Engine.js",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -26,7 +26,8 @@
   ],
   "dependencies": {
     "amdefine": ">=0.0.4",
-    "source-map": ">=0.1.40"
+    "source-map": ">=0.1.40",
+    "binary-search-bounds": ">=1.0.0"
   },
   "devDependencies": {
     "mocha": "git://github.com/hicknhack-software/mocha.git#master",
