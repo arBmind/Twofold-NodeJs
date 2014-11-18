@@ -1,4 +1,4 @@
-var expect = require("should");
+require("should");
 var data_driven = require('data-driven');
 var Engine = require('../lib/Engine');
 var LoaderStatus = require('../lib/TextLoader').Status;
