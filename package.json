@@ -31,9 +31,11 @@
   "devDependencies": {
     "mocha": "git://github.com/hicknhack-software/mocha.git#master",
     "should": ">=4.2.1",
-    "data-driven": ">=1.0.0"
+    "data-driven": ">=1.0.0",
+    "benchmark": ">=1.0.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha --reporter min --inline-diffs"
+    "test": "node_modules/.bin/mocha --reporter min --inline-diffs",
+    "benchmark": "node test/test-benchmark.js"
   }
 }
