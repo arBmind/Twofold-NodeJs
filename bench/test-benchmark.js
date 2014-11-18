@@ -1,8 +1,6 @@
-var Benchmark = require('benchmark');
 var Engine = require('../lib/Engine');
 var LoaderStatus = require('../lib/TextLoader').Status;
 var MessageHandler = require('../lib/MessageHandler');
-var util = require('util');
 
 var FAKE_LIB_NAME = "lib.twofold";
 function FakeTextLoader() {
@@ -44,29 +42,23 @@ function FakeTextLoader() {
   };
 }
 
-var messageHandler = MessageHandler();
-var textLoader = FakeTextLoader();
-var engine = Engine(messageHandler, textLoader);
+suite("Benchmarks", function(){
+  var messageHandler = MessageHandler();
+  var textLoader = FakeTextLoader();
+  var engine = Engine(messageHandler, textLoader);
 
-var suite = new Benchmark.Suite("benchmark");
+  benchmark("prepare", function () {
+    engine.prepare("TextTemplate.twofold");
+  });
 
-suite.add("Benchmark#prepare", function () {
-  engine.prepare("TextTemplate.twofold");
+  var prepared = engine.prepare("TextTemplate.twofold");
+  var context = {
+    type: { isArray: true, name: "TestArray" },
+    baseNames: ["base1", "base2", "base3"],
+    name: "Main"
+  };
+
+  benchmark("execute", function () {
+    engine.exec(prepared, context);
+  });
 });
-
-var prepared = engine.prepare("TextTemplate.twofold");
-var context = {
-  type: { isArray: true, name: "TestArray" },
-  baseNames: ["base1", "base2", "base3"],
-  name: "Main"
-};
-
-suite.add("Benchmark#execute", function () {
-  engine.exec(prepared, context);
-});
-
-suite.on('cycle', function(event) {
-  console.log(String(event.target) + ' time: ' + String(event.target.times.period));
-});
-
-suite.run({'async': true});
